@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Obrigado — BelleVie</title>
+  <link rel="stylesheet" th:href="@{assets/css/feedback.css}"/>
+</head>
+<body>
+<div th:replace="~{fragments/config :: config_default}"></div>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<main class="container">
+  <section class="card center">
+    <h2>Obrigado pelo seu feedback</h2>
+    <p>Recebemos sua mensagem e vamos usá-la para melhorar nossos cuidados.</p>
+    <a th:href="@{/}" class="btn-primary">Voltar à página inicial</a>
+  </section>
+</main>
+
+<footer class="footer">
+  <small>© <span th:text="${T(java.time.Year).now().value}">2025</span> BelleVie</small>
+</footer>
+</body>
+</html>

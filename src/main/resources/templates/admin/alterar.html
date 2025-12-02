@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Fragmento de código que será substituído pelo conteúdo do fragmento "heads" -->
+    <div th:replace="fragments/config :: config"></div>
+
+    <title>Fazer cadastro</title>
+    <style>
+        .mensagem {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+
+<!-- Include o fragmento de configuração -->
+<body class="light:bg-light-background">
+<!-- Configuração do tema -->
+<div th:replace="~{fragments/config :: config_home}"></div>
+<!-- Navbar -->
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<!-- Items fixos do tema -->
+<div th:replace="~{fragments/botaosubir :: botaosubir}"></div>
+<!--<div th:replace="~{fragments/botaoAdicionar :: botaoAdicionar}"></div>-->
+<div th:replace="~{fragments/sidebar :: sidebar}"></div>
+<!--espaçamento entre a navbar e o conteúdo principal-->
+<div th:replace="~{fragments/config :: inserir_}"></div>
+<div class="max-w-7xl mx-auto p-4 md:p-8 pt-24"></div>
+
+
+<div class="container">
+    <!-- Fragmento de código que será substituído pelo conteúdo do fragmento "cabecalho" -->
+    <div th:replace="fragments/navbar :: navbar"></div>
+    <div class="row">
+        <div class="col">
+
+            <!-- Mensagem carregada após a inserção dos dados-->
+            <div class="alert alert-success alert-dismissible fade show" th:if="${mensagem}">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <span th:text="${mensagem}"></span>
+            </div>
+
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2>Cadastro de <b>Admin</b></h2>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="col-sm-12" style="text-align: right;">
+                                <a th:href="@{/admin}" class="btn btn-primary"> Listagem <i class="fas fa-list"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Formulário de cadastro de alunos th:action="@{/aluno/salvar} recurso do Thymeleaf -->
+                <form th:action="@{/admin/salvar}" th:object="${admin}" method="post">
+                    <input type="hidden" th:field="*{id}">
+
+                    <div class="card">
+                        <div class="card-header">
+                            Dados Pessoais
+                        </div>
+
+                        <div class="card-body">
+                            <div class="form-control form-control-sm">
+                                <label class="col-sm-12 col-form-label">Nome de Administrador:</label>
+                                <div class="col-sm-12">
+
+                                    <!-- th:field="*{nome}" recurso do Thymeleaf. Carrega o atributo nome do objeto admin -->
+                                    <input class="form-control" type="text" th:field="*{nomeAdmin}">
+                                    <br>
+                                </div>
+                                <div class="col-sm-12">
+                                    <!-- Mensagem de erro caso o campo nome tenha algum erro de validação -->
+                                    <span class="mensagem" th:if="${#fields.hasErrors('nomeAdmin')}"
+                                          th:errors="*{nomeAdmin}">
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-control form-control-sm">
+                                <label class="col-sm-12 col-form-label">Senha:</label>
+                                <div class="col-sm-12">
+
+                                    <!-- th:field="*{email}" recurso do Thymeleaf. Carrega o atributo email do objeto aluno -->
+                                    <input class="form-control" type="password" th:field="*{senha}">
+                                    <br>
+                                </div>
+                                <div class="col-sm-12">
+
+                                    <!-- Mensagem de erro caso o campo email tenha algum erro de validação -->
+                                    <span class="mensagem" th:if="${#fields.hasErrors('senha')}"
+                                          th:errors="*{senha}">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button class="btn btn-success" type="submit"> Salvar <i class="fas fa-save"></i></button>
+                        </div>
+                        <div class="col-sm-6" style="text-align: right;">
+                            <a th:href="@{/admin}" class="btn btn-primary"> Voltar <i class="fas fa-save"></i></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Fragmento de código que será substituído pelo conteúdo do fragmento "footer" -->
+        <div th:replace="fragments/footer :: footer">
+        </div>
+    </div>
+</div>
+</body>
+</html>

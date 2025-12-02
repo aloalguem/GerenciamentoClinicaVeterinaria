@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Fragmento de código que será substituído pelo conteúdo do fragmento "heads" -->
+    <div th:replace="fragments/config :: config"></div>
+
+    <title>Fazer cadastro</title>
+    <style>
+        .mensagem {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="~{fragments/config :: inserir_}"></div>
+<div class="container">
+    <!-- Fragmento de código que será substituído pelo conteúdo do fragmento "cabecalho" -->
+
+    <div class="row">
+        <div class="col">
+
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2>Cadastro de <b>Usuários</b></h2>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="col-sm-12" style="text-align: right;">
+                                <a th:href="@{/user}" class="btn btn-primary"> Listagem <i class="fas fa-list"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Formulário de cadastro de alunos th:action="@{/aluno/salvar} recurso do Thymeleaf -->
+                <form th:action="@{/user/salvar}" th:object="${user}" method="post" enctype="multipart/form-data">
+                    <input type="hidden" th:field="*{id}">
+
+                    <div class="card">
+                        <div class="card-header">
+                            Dados Pessoais
+                        </div>
+
+                        <div class="card-body">
+                            <div class="form-control form-control-sm">
+                                <label class="col-sm-12 col-form-label">Nome:</label>
+                                <div class="col-sm-12">
+
+                                    <!-- th:field="*{nome}" recurso do Thymeleaf. Carrega o atributo nome do objeto user -->
+                                    <input class="form-control" type="text" th:field="*{nome}">
+                                    <br>
+                                </div>
+                                <div class="col-sm-12">
+                                    <!-- Mensagem de erro caso o campo nome tenha algum erro de validação -->
+                                    <span class="mensagem" th:if="${#fields.hasErrors('nome')}"
+                                          th:errors="*{nome}">
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-control form-control-sm">
+                                <label class="col-sm-12 col-form-label">Nome de usuário:</label>
+                                <div class="col-sm-12">
+
+                                    <!-- th:field="*{nome}" recurso do Thymeleaf. Carrega o atributo nome do objeto user -->
+                                    <input class="form-control" type="text" th:field="*{nomeUsuario}">
+                                    <br>
+                                </div>
+                                <div class="col-sm-12">
+                                    <!-- Mensagem de erro caso o campo nome tenha algum erro de validação -->
+                                    <span class="mensagem" th:if="${#fields.hasErrors('nome')}"
+                                          th:errors="*{nomeUsuario}">
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-control form-control-sm">
+                                <label class="col-sm-12 col-form-label">nome exibição:</label>
+                                <div class="col-sm-12">
+
+                                    <!-- th:field="*{email}" recurso do Thymeleaf. Carrega o atributo email do objeto aluno -->
+                                    <input class="form-control" type="text" th:field="*{nomeExibicao}">
+                                    <br>
+                                </div>
+                                <div class="col-sm-12">
+
+                                    <!-- Mensagem de erro caso o campo email tenha algum erro de validação -->
+                                    <span class="mensagem" th:if="${#fields.hasErrors('nomeExibicao')}"
+                                          th:errors="*{nomeExibicao}">
+                                    </span>
+                                </div>
+
+                            <div class="form-control form-control-sm">
+                                <label class="col-sm-12 col-form-label">Email:</label>
+                                <div class="col-sm-12">
+
+                                    <!-- th:field="*{email}" recurso do Thymeleaf. Carrega o atributo email do objeto aluno -->
+                                    <input class="form-control" type="text" th:field="*{email}">
+                                    <br>
+                                </div>
+                                <div class="col-sm-12">
+
+                                    <!-- Mensagem de erro caso o campo email tenha algum erro de validação -->
+                                    <span class="mensagem" th:if="${#fields.hasErrors('email')}"
+                                          th:errors="*{email}">
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-control form-control-sm">
+                                <label class="col-sm-12 col-form-label">Data de Nascimento:</label>
+                                <div class="col-sm-12">
+
+                                    <!-- th:field="*{nome}" recurso do Thymeleaf. Carrega o atributo nome do objeto user -->
+                                    <input class="form-control" type="text" th:field="*{dataDeNascimento}" placeholder="dd/MM/yyyy">
+                                    <br>
+                                </div>
+                                <div class="col-sm-12">
+                                    <!-- Mensagem de erro caso o campo dataDeNascimento tenha algum erro de validação -->
+                                    <span class="mensagem" th:if="${#fields.hasErrors('dataDeNascimento')}"
+                                          th:errors="*{dataDeNascimento}">
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-control form-control-sm">
+                                <label class="col-sm-12 col-form-label">Senha:</label>
+                                <div class="col-sm-12">
+
+                                    <!-- th:field="*{email}" recurso do Thymeleaf. Carrega o atributo email do objeto aluno -->
+                                    <input class="form-control" type="password" th:field="*{senha}">
+                                    <br>
+                                </div>
+                                <div class="col-sm-12">
+
+                                    <!-- Mensagem de erro caso o campo email tenha algum erro de validação -->
+                                    <span class="mensagem" th:if="${#fields.hasErrors('senha')}"
+                                          th:errors="*{senha}">
+                                    </span>
+                                </div>
+
+                                <div class="form-control form-control-sm">
+                                    <label class="col-sm-12 col-form-label">foto perfil:</label>
+                                    <div class="col-sm-12">
+
+                                        <!-- th:field="*{email}" recurso do Thymeleaf. Carrega o atributo email do objeto aluno -->
+<!--                                        <input class="form-control" type="file" name="foto" id="foto" accept="image/png, image/jpeg" th:field="*{urlImagem}">-->
+                                        <br>
+                                    </div>
+                                    <div class="col-sm-12">
+
+                                        <!-- Mensagem de erro caso o campo email tenha algum erro de validação -->
+                                        <span class="mensagem" th:if="${#fields.hasErrors('urlImagem')}"
+                                              th:errors="*{urlImagem}">
+                                    </span>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button class="btn btn-success" type="submit"> Salvar <i class="fas fa-save"></i></button>
+                        </div>
+                        <div class="col-sm-6" style="text-align: right;">
+                            <a th:href="@{/user}" class="btn btn-primary"> Voltar <i class="fas fa-save"></i></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Fragmento de código que será substituído pelo conteúdo do fragmento "footer" -->
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,325 @@
+/* ======================================= */
+/* VARIÁVEIS DE COR: AZUL E VERDE-ÁGUA     */
+/* ======================================= */
+
+/* Tema claro (Azul/Verde-Água) */
+:root {
+    --background-color: #e8f5e9; /* Verde-água muito claro - Fundo principal */
+    --sidebar-bg: #ffffff;      /* Branco puro para Sidebar */
+    --surface-color: #ffffff;   /* Branco puro para Cards */
+    --default-color: #263238;   /* Azul-marinho escuro para texto principal */
+    --heading-color: #004d40;   /* Verde-água escuro para títulos */
+    --contrast-color: #ffffff;  /* Texto sobre fundos escuros */
+    --accent-color: #4db6ac;    /* Verde-água médio/claro para destaque primário */
+    --border-color: #b2dfdb;    /* Borda suave em tom verde-água */
+    --hover-color-light: #e0f2f1; /* Cor de hover suave (muito claro) */
+    --heading-font: 'Inter', sans-serif;
+}
+
+/* Tema escuro (Azul/Verde-Água) */
+/* A implementação de dark-theme via JS pode ser feita adicionando a classe ao body */
+body.dark-theme {
+    --background-color: #1a2b3c;    /* Azul escuro/Marinho */
+    --sidebar-bg: #2c425a;          /* Azul escuro ligeiramente mais claro para Sidebar */
+    --surface-color: #2c425a;       /* Azul escuro para Cards */
+    --default-color: #e0f7fa;       /* Azul-água muito claro para texto principal */
+    --heading-color: #80cbc4;       /* Verde-água claro para títulos */
+    --contrast-color: #1a2b3c;      /* Texto de alto contraste (sobre accent) */
+    --accent-color: #00bcd4;        /* Ciano/Azul-água vibrante para destaque */
+    --border-color: #00838f;        /* Borda escura suave */
+    --hover-color-light: #4fb3c8;   /* Cor de hover mais clara */
+}
+
+/* ======================================= */
+/* ESTILOS DE DASHBOARD E COMPONENTES      */
+/* ======================================= */
+
+body {
+    font-family: var(--heading-font);
+    background-color: var(--background-color);
+    color: var(--default-color);
+    margin: 0;
+}
+
+/* Classes de utilidade forçadas para usar as variáveis */
+.text-heading { color: var(--heading-color); }
+.bg-accent { background-color: var(--accent-color); }
+.text-default { color: var(--default-color); }
+.border-base { border-color: var(--border-color); }
+
+.vet-dashboard {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--border-color);
+    padding: 2rem 1rem;
+    flex-shrink: 0;
+    transition: width 0.3s ease-in-out;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+/* Links de Navegação */
+.nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-weight: 500;
+    color: var(--default-color);
+    transition: background-color 0.2s, color 0.2s;
+    text-decoration: none; /* Adicionado para ser um link adequado */
+}
+
+.nav-link:hover {
+    background-color: var(--hover-color-light); /* Novo hover suave */
+    color: var(--heading-color); /* Escurece o texto no hover */
+}
+
+.nav-link.active {
+    background-color: var(--accent-color);
+    color: var(--contrast-color); /* Texto branco/escuro dependendo do tema */
+}
+
+.nav-link svg {
+    margin-right: 0.75rem;
+}
+
+/* Card */
+.card {
+    background-color: var(--surface-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
+}
+
+/* Botões */
+.primary-button {
+    background-color: var(--accent-color);
+    color: var(--contrast-color);
+    padding: 0.6rem 1.2rem;
+    border-radius: 9999px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s;
+}
+
+.primary-button:hover {
+    /* Cor de destaque mais escura para hover */
+    background-color: var(--heading-color);
+}
+.primary-button:active {
+    transform: scale(0.98);
+}
+
+.secondary-button {
+    background-color: transparent;
+    border: 1px solid var(--default-color);
+    color: var(--default-color);
+    padding: 0.6rem 1.2rem;
+    border-radius: 9999px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.secondary-button:hover {
+    background-color: var(--accent-color);
+    color: var(--contrast-color);
+    border-color: var(--accent-color);
+}
+
+/* Inputs e Formulários */
+.form-input {
+    margin-top: 0.25rem;
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.375rem; /* rounded-md */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
+    background-color: var(--surface-color);
+    color: var(--default-color);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-input:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(77, 182, 172, 0.3); /* Cor do accent com transparência */
+}
+.form-label {
+    display: block;
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 500;
+    color: var(--default-color);
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: var(--surface-color); /* Usando surface para o modal */
+    padding: 2rem;
+    border-radius: 12px; /* Aumentado para melhor estética */
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color);
+}
+
+/* Estilos do Calendário */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.calendar-header h2 {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--heading-color);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+    text-align: center;
+}
+
+.calendar-day-name {
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: var(--default-color);
+    opacity: 0.6;
+}
+
+.calendar-day {
+    padding: 0.5rem 0;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.2s, color 0.2s, border 0.2s;
+    position: relative;
+    color: var(--default-color);
+    height: 40px; /* Garante tamanho de clique */
+    line-height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calendar-day:not(.empty):hover {
+    background-color: var(--hover-color-light); /* Hover suave */
+}
+
+/* Indicador de compromisso */
+.calendar-day.has-appointment::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--heading-color); /* Usa heading-color para destaque */
+}
+
+.calendar-day.selected.has-appointment::after {
+    background-color: var(--contrast-color); /* Branco/escuro sobre a seleção */
+}
+
+/* Dia de hoje */
+.calendar-day.today {
+    border: 2px solid var(--accent-color);
+    font-weight: 700;
+}
+
+/* Dia selecionado */
+.calendar-day.selected {
+    background-color: var(--accent-color);
+    color: var(--contrast-color);
+    font-weight: 700;
+}
+
+.empty {
+    cursor: default;
+}
+
+/* Paciente Card */
+.patient-card {
+    background-color: var(--surface-color);
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s;
+}
+.patient-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.patient-card h4 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+}
+.patient-card p {
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+.patient-card .badge {
+    display: inline-block;
+    background-color: var(--hover-color-light);
+    color: var(--heading-color);
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+    .vet-dashboard {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        height: auto;
+        padding: 1rem;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .main-content {
+        padding: 1rem;
+    }
+    .grid-cols-1-lg-2 {
+        grid-template-columns: 1fr;
+    }
+}

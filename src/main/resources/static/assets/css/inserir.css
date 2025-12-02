@@ -1,0 +1,176 @@
+
+/* Card Header */
+.card-header {
+    /* Estilos do novo bloco */
+    background: #5ab9a9;
+    color: white;
+    font-weight: bold;
+    padding: 14px 20px;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    /* Estilos do bloco anterior que podem ser úteis */
+    /* border-bottom: 1px solid var(--border-color); */
+}
+
+/* Card Body */
+.card-body {
+    /* Estilos do novo bloco */
+    padding: 25px;
+    /* Resetando estilos de border/shadow para que fiquem apenas no .card */
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    margin-top: 0;
+}
+
+/* ======= CAMPOS DO FORMULÁRIO (Estilos do novo bloco) ======= */
+
+/* Containers de Input no Formulário (para agrupar label/input/erro) */
+.form-control-sm {
+    /* Removido o margin-bottom do bloco anterior (1.25rem), usando o do novo bloco */
+    margin-bottom: 20px;
+    padding: 0;
+    border: none;
+}
+
+/* Form Controls (Inputs) */
+.form-control,
+input[type="date"],
+input[type="time"],
+select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #b6e2d6; /* Priorizado o border do novo bloco */
+    border-radius: 10px; /* Priorizado o border-radius do novo bloco */
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #f8fffd; /* Priorizado o background do novo bloco */
+    color: var(--default-color);
+    margin-top: 6px; /* Ajustado para melhor espaçamento com a label */
+}
+
+input:focus,
+select:focus,
+.form-control:focus {
+    border-color: #5ab9a9; /* Priorizado o border-color do novo bloco */
+    box-shadow: 0 0 0 3px rgba(90, 185, 169, 0.3); /* Priorizado o box-shadow do novo bloco */
+    outline: none;
+}
+
+/* Adicionar estilo visual para input em estado de erro (Simulação: .error-input) */
+.form-control.error-input {
+    border-color: var(--danger-color);
+    box-shadow: 0 0 0 1px var(--danger-color);
+}
+
+.form-control.error-input:focus {
+    border-color: var(--danger-color);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger-color) 40%, transparent);
+}
+
+
+/* Labels */
+.col-form-label,
+label {
+    font-weight: 600; /* Priorizado o font-weight do novo bloco */
+    color: #2a7b6f; /* Priorizado a cor do novo bloco */
+    display: block;
+    margin-bottom: 6px; /* Priorizado o margin-bottom do novo bloco */
+}
+
+/* Mensagem de Erro (Classe .mensagem) */
+.mensagem {
+    color: #e63946; /* Priorizado a cor do novo bloco */
+    font-size: 0.9rem; /* Priorizado o font-size do novo bloco */
+    margin-top: 5px; /* Priorizado o margin-top do novo bloco */
+    display: block;
+}
+
+/* ======= ALERTAS ======= */
+.alert.alert-success {
+    /* Priorizando estilos do novo bloco, que são mais customizados */
+    background: #d9f3eb;
+    color: #226b5d;
+    border: 1px solid #b5e6d8;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    font-weight: 500;
+
+    line-height: 1.5; /* Ajustado para melhor legibilidade */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.alert.alert-success .btn-close {
+    color: #226b5d; /* Cor do novo bloco */
+    opacity: 0.8;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.alert.alert-success .btn-close:hover {
+    opacity: 1;
+}
+
+/* Layout de Colunas (Manutenção das classes de layout existentes no HTML) */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+    align-items: center;
+}
+
+.col-sm-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.text-align-right {
+    text-align: right;
+}
+
+/* Estilo para o botão de tema */
+#theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 100;
+    background-color: var(--surface-color);
+    color: var(--default-color);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+
+/* ======= RESPONSIVIDADE (Estilos do novo bloco) ======= */
+@media (max-width: 768px) {
+    .container {
+        margin: 80px 15px;
+        padding: 1.5rem;
+    }
+
+    .table-title {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .table-title .btn {
+        align-self: flex-end;
+    }
+
+    .card-body {
+        padding: 18px;
+    }
+}

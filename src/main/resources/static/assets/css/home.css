@@ -1,0 +1,20 @@
+/* Importa a fonte do Google Fonts (opcional, se você quiser uma fonte específica) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #4db6ac; /* Verde principal para botões, etc. */
+    --secondary-color: #00897b; /* Verde mais claro para detalhes */
+    --accent-color: #004d40; /* Um amarelo/laranja para destaque (opcional) */
+    --light-background: #F9F9F9; /* Fundo muito claro */
+    --white-background: #FFFFFF; /* Fundo branco para cards */
+    --text-color: #333333; /* Cor principal do texto */
+    --light-text-color: #666666; /* Cor do texto secundário */
+    --border-color: #e0e0e0; /* Cor da borda para elementos */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light-background);
+    color: var(--text-color);
+    line-height: 1.6;
+}

@@ -1,0 +1,61 @@
+    /* Container principal do carrossel, esconde o que estiver fora do campo de visão */
+#carousel-container {
+    overflow: hidden;
+    position: relative;
+    padding: 0 50px; /* Espaço para os botões de navegação */
+}
+
+/* Container flexível que contém todos os cards e será movido pelo JavaScript */
+#carousel-items {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Estilo para cada card dentro do carrossel */
+.card-wrapper { /* Mantive a classe aqui, pois ela pode ser reutilizada */
+    flex: 0 0 auto;
+    width: calc(100% / 3); /* Exibe 3 cards por vez em telas maiores */
+    padding: 10px;
+}
+
+/* Oculta os cards extras em telas menores, mantendo um por vez */
+@media (max-width: 767px) {
+    .card-wrapper {
+        width: 100%;
+    }
+}
+
+/* Estilos dos cards */
+.card {
+    height: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Estilos dos botões de navegação */
+#prevBtn,
+#nextBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 5%;
+}
+
+#prevBtn {
+    left: 0;
+}
+
+#nextBtn {
+    right: 0;
+}
+
+
+/*#produtosSection {*/
+/*    background-color: green;*/
+/*    background-image: radial-gradient(circle at bottom left, darkgreen, transparent 70%);*/
+/*}*/

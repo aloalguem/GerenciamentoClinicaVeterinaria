@@ -1,0 +1,467 @@
+/* ======================================= */
+/* CONFIGURAÇÃO DE FONTES E VARIÁVEIS      */
+/* ======================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    /* Paleta de Cores Refinada (Verde Floresta e Tons Neutros) */
+    --primary-color: #5B8C51;        /* Verde Floresta Principal (Botões, Destaque) */
+    --primary-dark-hover: #456C3C;   /* Verde mais escuro para hover */
+    --secondary-color: #A9D18E;      /* Verde Pastel/Claro (Fundos de cabeçalho, bordas) */
+
+    /* Fundos */
+    --light-background: #F8F9FA;    /* Fundo suave e quase branco */
+    --white-background: #FFFFFF;    /* Fundo principal de cards e modais */
+
+    /* Texto */
+    --text-color: #343A40;          /* Preto suave */
+    --light-text-color: #6C757D;    /* Cinza sutil para detalhes */
+
+    /* Feedback e Bordas */
+    --danger-color: #DC3545;        /* Vermelho para Cancelar */
+    --warning-color: #FFC107;        /* Amarelo para Pendente */
+    --border-color: #E9ECEF;        /* Borda muito leve */
+    --spacing-unit: 1.5rem;         /* Unidade de espaçamento base */
+}
+
+/* ======================================= */
+/* ESTILOS GERAIS E BODY                   */
+/* ======================================= */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light-background);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding-top: 5rem; /* Espaço para a navbar fixa */
+    transition: background-color 0.3s;
+}
+
+.app-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: var(--spacing-unit);
+}
+
+/* --------------------------------------- */
+/* NAV BAR (Customizada)                   */
+/* --------------------------------------- */
+.app-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--white-background);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+    padding: 0.8rem var(--spacing-unit);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar-brand {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+/* --------------------------------------- */
+/* TIPOGRAFIA E CABEÇALHOS                 */
+/* --------------------------------------- */
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin: 0;
+}
+
+h1 span {
+    color: var(--primary-color);
+}
+
+.text-muted {
+    color: var(--light-text-color) !important;
+    font-weight: 400;
+    margin-top: 0.25rem;
+}
+
+h2 {
+    font-size: 2rem;
+    color: var(--primary-dark-hover);
+    font-weight: 700;
+    margin-top: 3.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+/* --------------------------------------- */
+/* LAYOUT (Flexbox/Grid)                   */
+/* --------------------------------------- */
+
+.flex-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-unit);
+    gap: 1rem;
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-unit);
+}
+
+/* --------------------------------------- */
+/* BOTÕES                                  */
+/* --------------------------------------- */
+
+.app-btn {
+    font-weight: 600;
+    border-radius: 50px;
+    padding: 0.7rem 1.75rem;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: none;
+}
+
+.app-btn:active {
+    transform: scale(0.98);
+}
+
+/* Botão de Adicionar Pet (Success) */
+.btn-success {
+    background-color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    color: var(--white-background);
+    box-shadow: 0 4px 10px rgba(91, 140, 81, 0.3);
+}
+
+.btn-success:hover {
+    background-color: var(--primary-dark-hover);
+    border-color: var(--primary-dark-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(91, 140, 81, 0.4);
+}
+
+/* Botão de Agendar Consulta (Outline Primary) */
+.btn-outline-primary {
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    background-color: transparent;
+    padding: 0.6rem 1.6rem;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: var(--white-background);
+}
+
+/* Botão de Cancelar (Outline Danger) */
+.btn-outline-danger {
+    color: var(--danger-color);
+    border: 1px solid var(--danger-color);
+    background-color: transparent;
+    font-weight: 500;
+    padding: 0.4rem 1rem;
+    font-size: 0.875rem;
+    width: 100%;
+}
+
+.btn-outline-danger:hover {
+    background-color: var(--danger-color);
+    color: var(--white-background);
+}
+
+/* --------------------------------------- */
+/* CARDS (PETS E AGENDAMENTOS)             */
+/* --------------------------------------- */
+
+.app-card {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    background-color: var(--white-background);
+    padding: var(--spacing-unit);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+}
+
+.app-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+/* Lista de Detalhes (dl/dt/dd customizada) */
+.pet-info {
+    display: grid;
+    grid-template-columns: 100px 1fr; /* Coluna fixa para o label, e o restante para o valor */
+    gap: 0.3rem;
+    margin-bottom: 0;
+    flex-grow: 1; /* Permite que o bloco cresça */
+}
+.pet-info dt {
+    color: var(--light-text-color);
+    font-weight: 500;
+}
+.pet-info dd {
+    font-weight: 600;
+    color: var(--text-color);
+    margin-left: 0;
+}
+
+/* Detalhes de Agendamento */
+.appointment-detail p {
+    margin-bottom: 0.5rem;
+}
+.appointment-detail p strong {
+    color: var(--primary-dark-hover);
+    font-weight: 600;
+}
+
+/* --------------------------------------- */
+/* BADGES (Tags de Status)                 */
+/* --------------------------------------- */
+
+.app-badge {
+    padding: 0.4em 0.9em;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.badge-primary { /* Espécie */
+    background-color: var(--secondary-color);
+    color: var(--primary-dark-hover);
+}
+
+.badge-warning { /* Pendente */
+    background-color: var(--warning-color);
+    color: var(--text-color);
+}
+
+.badge-success { /* Concluído */
+    background-color: var(--primary-color);
+    color: var(--white-background);
+}
+
+.badge-danger { /* Cancelado */
+    background-color: var(--danger-color);
+    color: var(--white-background);
+}
+
+
+/* --------------------------------------- */
+/* ALERTAS                                 */
+/* --------------------------------------- */
+
+.app-alert {
+    border-radius: 8px;
+    font-weight: 500;
+    padding: 1rem 1.5rem;
+    margin-top: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    /* Estilo específico para sucesso (ajustado por JS) */
+}
+
+/* --------------------------------------- */
+/* MODAIS (Sistema Customizado)            */
+/* --------------------------------------- */
+
+.app-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none; /* Escondido por padrão */
+    justify-content: center;
+    align-items: center;
+    z-index: 1050;
+}
+
+.app-modal.is-visible {
+    display: flex;
+}
+
+.modal-dialog {
+    background-color: var(--white-background);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-50px);
+    opacity: 0;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.app-modal.is-visible .modal-dialog {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--light-background);
+    border-bottom: 1px solid var(--border-color);
+    padding: var(--spacing-unit);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+/* CORREÇÃO APLICADA AQUI: Adicionando padding ao corpo do modal */
+.modal-body {
+    padding: var(--spacing-unit); /* Padding interno para o conteúdo do formulário */
+}
+
+.modal-title {
+    color: var(--primary-dark-hover);
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    border-top: 1px solid var(--border-color);
+    padding: var(--spacing-unit);
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+/* Botão Fechar Modal (X) */
+.btn-close {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: var(--light-text-color);
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.2s;
+}
+.btn-close:hover {
+    color: var(--danger-color);
+}
+
+/* Estilo de Formulário no Modal */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-label {
+    display: block;
+    font-weight: 600;
+    color: var(--primary-dark-hover);
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+}
+
+.app-input, .app-select {
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.65rem 1rem;
+    background-color: var(--white-background);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
+}
+
+.app-input:focus, .app-select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(91, 140, 81, 0.25);
+}
+
+/* Campo de erro */
+.text-danger-custom {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--danger-color);
+    margin-top: 0.25rem;
+    display: block;
+}
+
+.input-group {
+    display: flex;
+    gap: var(--spacing-unit);
+}
+.input-group > div {
+    flex: 1;
+}
+
+.btn-secondary {
+    background-color: var(--light-background);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 0.7rem 1.75rem;
+    font-weight: 500;
+    border-radius: 50px;
+}
+.btn-secondary:hover {
+    background-color: #E9ECEF;
+}
+
+/* --------------------------------------- */
+/* RESPONSIVIDADE                          */
+/* --------------------------------------- */
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    .grid-layout {
+        grid-template-columns: 1fr; /* Coluna única no mobile */
+        gap: 1rem;
+    }
+    .flex-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .app-btn.btn-success {
+        width: 100%;
+    }
+    .modal-dialog {
+        width: 95%;
+        margin: var(--spacing-unit) auto;
+    }
+    .input-group {
+        flex-direction: column;
+        gap: 0;
+    }
+    .input-group > div {
+        flex: none;
+    }
+    .modal-body {
+        padding: var(--spacing-unit); /* Padding interno para o conteúdo do formulário */
+    }
+
+    /*Isso deve resolver o problema de espaçamento e melhorar a aparência do formulário. Se precisar de mais ajustes no design, é só me dizer!
+*/}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="sidebar">
+    <div th:replace="fragments/config :: config_sidebar"></div>
+    <div class="div-pai">
+    <button id="toggleSidebar">
+        <p>&#9776;</p>
+    </button>
+    <aside id="sidebar" class="sidebar">
+        <div class="top-div">
+            <button id="toggleThemeBtn" aria-label="Toggle Dark Mode"></button>
+        </div>
+
+        <nav class="main-links">
+            <a href="/estoque">Produtos</a>
+            <a href="/agendamento">Agendar Consulta</a>
+            <a href="/foruns">Sobre nós</a>
+            <a>Status do Pet</a>
+        </nav>
+
+        <div class="sub-links">
+            <a href="/estantes">Ver Agendamentos</a>
+            <a href="/playlists">Ver Histórico de Compras</a>
+        </div>
+
+
+
+        <div class="profile-footer" onclick="window.location.href='/perfil'">
+            <div class="profile-pic"></div>
+            <div class="profile-info">
+                <p>Perfil</p>
+                <span>@perfil</span>
+            </div>
+            <div class="settings-icon">⚙️</div>
+        </div>
+    </aside>
+</div>
+</div>
+</body>
+</html>

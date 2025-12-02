@@ -1,0 +1,110 @@
+/* ======================================================== */
+/* DEFINIÇÕES DE CORES CUSTOMIZADAS (Simulando o Tailwind) */
+/* ======================================================== */
+
+/* Definindo cores no :root para que o Tailwind as utilize.
+   O Tailwind não entende diretamente as variáveis CSS em classes,
+   mas podemos usar CSS customizado para as classes Thymeleaf. */
+:root {
+    /* Cores Primárias (Primary) - Tons de Azul/Ciano Escuro */
+    --color-primary: #3b82f6;       /* Cor de destaque principal (hover) */
+    --color-primary-dark-2: #1e293b; /* Fundo do Footer (bg-primary-dark-2) - Azul Escuro */
+    --color-primary-light-10: #dbeafe; /* Tom claro para hover/focus */
+
+    /* Cores de Texto (Body) */
+    --color-body-dark-11: #9ca3af;  /* Texto do Body em Tom de Cinza Claro (text-body-dark-11) */
+    --color-body-dark-12: #f3f4f6;  /* Cinza mais claro para hover */
+
+    /* Cores de Alpha (Alpha) - Usado para bordas ou divisores */
+    --color-alpha-dark: #374151;    /* Borda escura (border-alpha-dark) */
+
+    /* Cores de Texto Padrão (White) */
+    --color-white: #ffffff;
+}
+
+/* Aplicação das cores customizadas a classes Tailwind não-padrão */
+
+.bg-primary-dark-2 {
+    background-color: var(--color-primary-dark-2);
+}
+
+.text-body-dark-11 {
+    color: var(--color-body-dark-11);
+}
+
+.text-primary {
+    color: var(--color-primary);
+}
+
+.border-alpha-dark {
+    border-color: var(--color-alpha-dark);
+}
+
+.hover\:text-primary:hover {
+    color: var(--color-primary);
+}
+
+.hover\:text-body-dark-12:hover {
+    color: var(--color-body-dark-12);
+}
+
+/* Estilo para o campo de input e botão de subscrição */
+.bg-primary {
+    background-color: var(--color-primary);
+}
+
+.text-primary-color {
+    color: var(--color-white); /* Usando a cor branca para o ícone no botão primário */
+}
+
+.focus\:border-primary:focus {
+    border-color: var(--color-primary);
+}
+
+/* Ajuste do container para centralização no CSS nativo, caso o Tailwind não esteja configurado */
+.container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-width: 1280px; /* Largura máxima comum para containers */
+}
+
+/* Simulando o sistema de Grid do Bootstrap (col-x) com Flexbox/Tailwind */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -1rem;
+    margin-right: -1rem;
+}
+.col-12 { width: 100%; padding: 0 1rem; }
+.col-6 { width: 50%; padding: 0 1rem; }
+.lg\:col-4 {
+    /* Responsividade para LG */
+    flex: 0 0 auto;
+    width: 100%;
+}
+.lg\:col-2 {
+    /* Responsividade para LG */
+    flex: 0 0 auto;
+    width: 100%;
+}
+
+@media (min-width: 1024px) { /* Breakpoint LG */
+    .lg\:col-4 { width: 33.333333%; }
+    .lg\:col-2 { width: 16.666667%; }
+    .lg\:order-1 { order: 1; }
+}
+
+/* Ajuste para o layout do rodapé de copyright */
+@media (min-width: 768px) { /* Breakpoint MD */
+    .md\:w-1\/2 { width: 50%; }
+    .md\:justify-start { justify-content: flex-start; }
+    .md\:justify-end { justify-content: flex-end; }
+}
+
+/* Estilo para garantir que o input e o botão fiquem na mesma linha */
+.subscribe-form-wrapper {
+    display: flex;
+}

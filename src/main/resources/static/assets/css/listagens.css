@@ -1,0 +1,323 @@
+/* ======================================= */
+/* VARIÁVEIS DE TEMA: AZUL E VERDE-ÁGUA    */
+/* ======================================= */
+
+/* --------------------------------------- */
+/* TEMA CLARO */
+/* --------------------------------------- */
+:root {
+    /* Base */
+    --background-color: #e8f5e9;
+    --surface-color: #ffffff;
+    --default-color: #263238;
+    --heading-color: #004d40;
+    --contrast-color: #ffffff;
+
+    /* Destaque e Interatividade */
+    --accent-color: #4db6ac;
+    --border-color: #b2dfdb;
+    --hover-color-light: #b3d6d4;
+
+    /* Cores de Feedback */
+    --danger-color: #D32F2F;
+    --info-color: #1976D2;
+    --success-color: #28A745;       /* Novo: Verde para sucesso */
+
+    --heading-font: 'Inter', sans-serif;
+}
+
+/* --------------------------------------- */
+/* TEMA ESCURO */
+/* --------------------------------------- */
+body.dark-theme {
+    /* Base */
+    --background-color: #1a2b3c;
+    --surface-color: #2c425a;
+    --default-color: #e0f7fa;
+    --heading-color: #80cbc4;
+    --contrast-color: #1a2b3c;
+
+    /* Destaque e Interatividade */
+    --accent-color: #00bcd4;
+    --border-color: #00838f;
+    --hover-color-light: #4fb3c8;
+
+    /* Cores de Feedback */
+    --danger-color: #EF9A9A;
+    --info-color: #4FC3F7;
+    --success-color: #4CAF50;       /* Novo: Verde mais claro para dark mode */
+}
+
+/* ======================================= */
+/* ESTILOS GERAIS */
+/* ======================================= */
+body {
+    font-family: var(--heading-font);
+    background-color: var(--background-color);
+    color: var(--default-color);
+    transition: background-color 0.3s, color 0.3s;
+    min-height: 100vh;
+}
+
+/* Título da Página */
+.page-title {
+    color: var(--heading-color);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+/* ======================================= */
+/* ESTILOS DO BOTÃO "NOVO ITEM" E PRIMÁRIO */
+/* ======================================= */
+.btn-primary {
+    background-color: var(--accent-color);
+    color: var(--contrast-color);
+    border: none;
+    padding: 0.5rem 1.25rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    cursor: pointer;
+    line-height: 1.5; /* Ajuste para melhor alinhamento com ícones */
+}
+
+.btn-primary:hover {
+    background-color: var(--heading-color);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    color: var(--contrast-color);
+}
+
+/* ======================================= */
+/* ESTILOS DE FORMULÁRIO E CARDS */
+/* ======================================= */
+
+/* Card Container */
+.card {
+    background-color: var(--surface-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden;
+    margin-top: 1rem;
+    border: 1px solid var(--border-color);
+}
+
+/* Card Header */
+.card-header {
+    background-color: var(--hover-color-light); /* Fundo suave */
+    color: var(--heading-color);
+    font-weight: 600;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 1.1rem;
+}
+
+/* Card Body */
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Form Controls (Inputs, Textareas) */
+.form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-top: 0.5rem;
+    /* margin-bottom: 1rem; - Removido, será tratado pelo container form-control-sm */
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--surface-color);
+    color: var(--default-color);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-control:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-color) 40%, transparent);
+    outline: none;
+}
+
+/* Containers de Input no Formulário */
+.form-control-sm {
+    margin-bottom: 1rem;
+    padding: 0; /* Remove padding extra do form-control-sm */
+    border: none; /* Garante que o div container não tenha borda */
+}
+
+/* Labels */
+label.col-form-label {
+    color: var(--default-color);
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    display: block;
+}
+
+/* Botão Salvar (Success) */
+.btn-success {
+    background-color: var(--success-color);
+    color: var(--contrast-color);
+    border: none;
+    padding: 0.5rem 1.25rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    line-height: 1.5;
+}
+
+.btn-success:hover {
+    background-color: color-mix(in srgb, var(--success-color) 80%, var(--heading-color) 20%);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Mensagem de Erro */
+.mensagem {
+    color: var(--danger-color);
+    font-size: 0.875rem;
+    display: block;
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Alerta de Sucesso (após inserção) */
+.alert.alert-success {
+    background-color: color-mix(in srgb, var(--success-color) 20%, var(--surface-color) 80%);
+    color: var(--default-color);
+    border: 1px solid var(--success-color);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    /* Estilo para o botão fechar do alerta (se for usado) */
+    line-height: 1;
+}
+
+.alert.alert-success .btn-close {
+    /* Cor do ícone de fechar em relação ao fundo */
+    color: var(--default-color);
+    opacity: 0.7;
+}
+
+/* Estilo para ícones dentro dos botões (Font Awesome) */
+.btn .fas {
+    margin-left: 0.5rem;
+    margin-right: -0.25rem;
+}
+
+/* ======================================= */
+/* ESTILOS DA TABELA (Sem Bordas, Card) */
+/* ======================================= */
+.table-container {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    background-color: var(--surface-color);
+}
+
+/* A tabela é usada dentro do container */
+.table {
+    border: none; /* Borda externa removida */
+    width: 100%;
+    border-collapse: collapse; /* Essencial para tabelas sem borda */
+}
+
+/* Cabeçalho da Tabela */
+.table-dark thead {
+    background-color: var(--heading-color) !important;
+    color: var(--contrast-color) !important;
+}
+
+.table-dark th {
+    font-weight: 700;
+    padding: 1rem;
+    border: none !important;
+    box-shadow: inset 0 -3px 0 0 var(--accent-color);
+    text-align: left;
+}
+
+/* Efeito Zebra */
+.table-striped tbody tr:nth-child(odd) {
+    background-color: var(--surface-color);
+}
+
+.table-striped tbody tr:nth-child(even) {
+    background-color: color-mix(in srgb, var(--background-color) 30%, var(--surface-color) 70%);
+}
+
+/* Corpo da Tabela */
+.table tbody tr {
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover na Linha */
+.table tbody tr:hover {
+    background-color: var(--hover-color-light) !important;
+    box-shadow: inset 3px 0 0 0 var(--accent-color);
+}
+
+/* Células e Texto */
+.table tbody td {
+    color: var(--default-color);
+    padding: 0.75rem 1rem;
+    vertical-align: middle;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Estilo para "Nenhum registro encontrado" */
+.table tbody tr.empty-row td {
+    text-align: center;
+    font-style: italic;
+    opacity: 0.7;
+    padding: 2rem;
+}
+
+/* Estilos de Ações (Ícones) */
+.table tbody td a {
+    text-decoration: none;
+    margin-right: 0.5rem;
+    transition: color 0.2s ease;
+}
+
+.table tbody td a.edit {
+    color: var(--info-color);
+}
+
+.table tbody td a.edit:hover {
+    color: var(--heading-color);
+}
+
+.table tbody td a.delete {
+    color: var(--danger-color);
+}
+
+.table tbody td a.delete:hover {
+    opacity: 0.7;
+}
+
+.table tbody td .material-icons {
+    font-size: 18px;
+    vertical-align: middle;
+}
+
+/* Estilo para o botão de tema */
+#theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 100;
+    background-color: var(--surface-color);
+    color: var(--default-color);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}

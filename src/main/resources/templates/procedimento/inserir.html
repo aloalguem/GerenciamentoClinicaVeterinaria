@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cadastro de Procedimento</title>
+    <style>
+        .mensagem {
+            color: red;
+        }
+    </style>
+</head>
+<body class="light:bg-light-background">
+
+<!-- Configuração do tema -->
+<div th:replace="~{fragments/config :: config_default}"></div>
+<!-- Navbar -->
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<!-- Items fixos do tema -->
+<div th:replace="~{fragments/botaosubir :: botaosubir}"></div>
+
+<div th:replace="~{fragments/config :: inserir_}"></div>
+
+<!-- Espaçamento entre a navbar e o conteúdo principal -->
+<div class="max-w-7xl mx-auto p-4 md:p-8 pt-24"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            <!-- Mensagem carregada após a inserção dos dados-->
+            <div class="alert alert-success alert-dismissible fade show" th:if="${mensagem}">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <span th:text="${mensagem}"></span>
+            </div>
+
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2>Cadastro de <b>Procedimentos</b></h2>
+                        </div>
+                        <div class="col-sm-6 text-end">
+                            <a th:href="@{/procedimento}" class="btn btn-primary"> Listagem <i class="fas fa-list"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulário de cadastro -->
+                <form th:action="@{/procedimento/salvar}" th:object="${procedimento}" method="post">
+
+                    <div class="card">
+                        <div class="card-header">
+                            Dados do Procedimento
+                        </div>
+
+                        <div class="card-body">
+
+                            <!-- Nome -->
+                            <div class="form-control form-control-sm">
+                                <label class="col-sm-12 col-form-label">Procedimento:</label>
+                                <div class="col-sm-12">
+                                    <input class="form-control" type="text" th:field="*{nome}">
+                                </div>
+                                <div class="col-sm-12">
+                                    <span class="mensagem" th:if="${#fields.hasErrors('nome')}"
+                                          th:errors="*{nome}"></span>
+                                </div>
+                            </div>
+
+                            <!-- Valor (opcional) -->
+                            <div class="form-control form-control-sm">
+                                <label class="col-sm-12 col-form-label">Valor (R$):</label>
+                                <div class="col-sm-12">
+                                    <input class="form-control" type="number" step="0.01" min="0" th:field="*{valor}">
+                                </div>
+                            </div>
+
+                            <div class="form-control form-control-sm">
+                                <label class="col-sm-12 col-form-label">Veterinário:</label>
+                                <div class="col-sm-12">
+                                    <select th:field="*{veterinario.id}">
+                                        <option value="">Selecione o veterinário</option>
+                                        <option
+                                                th:each="veterinarioo : ${veterinarios}"
+                                                th:value="${veterinarioo.id}"
+                                                th:text="${veterinarioo.nome}"
+                                        ></option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-12">
+                                    <span class="mensagem" th:if="${#fields.hasErrors('veterinario.id')}"
+                                          th:errors="*{veterinario.id}"></span>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button class="btn btn-success" type="submit"> Salvar <i class="fas fa-save"></i></button>
+                        </div>
+                        <div class="col-sm-6 text-end">
+                            <a th:href="@{/procedimento}" class="btn btn-primary"> Voltar <i class="fas fa-undo"></i></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Rodapé -->
+        <div th:replace="fragments/footer :: footer"></div>
+    </div>
+</div>
+
+
+</body>
+</html>

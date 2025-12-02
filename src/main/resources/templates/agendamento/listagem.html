@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Agendamento</title>
+    <!-- Bootstrap / CSS (se ainda não estiver incluso nos fragments) -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body class="light:bg-light-background">
+
+<!-- Configuração do tema -->
+<div th:replace="~{fragments/config :: config_default}"></div>
+
+<!-- Navbar -->
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<!-- Botão para subir -->
+<div th:replace="~{fragments/botaosubir :: botaosubir}"></div>
+<div th:replace="~{fragments/config :: listas}"></div>
+<!-- Espaçamento entre a navbar e o conteúdo principal -->
+<div class="max-w-7xl mx-auto p-4 md:p-8 pt-24"></div>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Agendamento</h2>
+
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Pet</th>
+            <th>Procedimento</th>
+            <th>Data</th>
+            <th>Hora</th>
+            <th>Status</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Caso a lista esteja vazia -->
+        <tr th:if="${#lists.isEmpty(agendamentos)}">
+            <td colspan="8" class="text-center">Nenhum registro encontrado</td>
+        </tr>
+
+        <meta charset="UTF-8">
+        <!-- Percorre os agendamentos -->
+        <tr th:each="agendamento : ${agendamentos}">
+            <td th:text="${agendamento.id}">ID</td>
+            <td th:text="${agendamento.pet.nome}">Pet</td>
+            <td th:text="${agendamento.procedimento.nome}">Procedimento/td>
+            <td th:text="${agendamento.data}">Data</td>
+            <td th:text="${agendamento.horario}">Horário</td>
+            <td th:text="${agendamento.status}">Status</td>
+
+            <td>
+                <!-- Alterar -->
+                <a th:href="@{/agendamento/alterar/{id}(id=${agendamento.id})}" class="edit" data-toggle="tooltip" title="Alterar">
+                    <i class="material-icons">&#xE254;</i>
+                </a>
+                <!-- Excluir -->
+                <a th:href="@{/agendamento/excluir/{id}(id=${agendamento.id})}"
+                   th:data-confirm-delete="|Você gostaria de apagar ${agendamento.id}?|"
+                   onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false"
+                   class="delete" data-toggle="tooltip" title="Excluir">
+                    <i class="material-icons">&#xE872;</i>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Feedback - BelleVie</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{assets/css/feedback.css}"/>
+
+    <!-- Se você tiver a fonte Mont Heavy local, adicione via @font-face no CSS. -->
+</head>
+<body>
+<div th:replace="~{fragments/config :: config_default}"></div>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<main class="container">
+    <section class="card">
+        <h2>Deixe seu feedback</h2>
+        <p class="subtitle">A sua opinião nos ajuda a cuidar ainda melhor.</p>
+
+        <form th:action="@{/feedback/enviar}" method="post" th:object="${feedback}" class="feedback-form">
+            <div class="row">
+                <label for="name">Nome</label>
+                <input type="text" id="name" th:field="*{name}" placeholder="Seu nome" required/>
+            </div>
+
+            <div class="row">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" th:field="*{email}" placeholder="seu@exemplo.com" required/>
+            </div>
+
+            <div class="row">
+                <label for="rating">Avaliação</label>
+                <div class="rating-group">
+                    <select id="rating" th:field="*{rating}">
+                        <option value="5">5 — Excelente</option>
+                        <option value="4">4 — Muito bom</option>
+                        <option value="3">3 — Bom</option>
+                        <option value="2">2 — Regular</option>
+                        <option value="1">1 — Ruim</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="message">Comentário</label>
+                <textarea id="message" th:field="*{message}" rows="6" placeholder="Conte-nos sua experiência..." required></textarea>
+            </div>
+
+            <div class="actions">
+                <button type="submit" class="btn-primary">Enviar feedback</button>
+                <button type="reset" class="btn-secondary">Limpar</button>
+            </div>
+        </form>
+    </section>
+</main>
+
+<footer class="footer">
+    <small>© <span th:text="${T(java.time.Year).now().value}">2025</span> BelleVie — Clínica Veterinária</small>
+</footer>
+</body>
+</html>

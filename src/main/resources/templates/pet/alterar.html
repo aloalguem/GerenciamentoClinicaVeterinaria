@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cadastro de Pets</title>
+    <style>
+        .mensagem {
+            color: red;
+        }
+    </style>
+</head>
+<body class="light:bg-light-background">
+
+<!-- Configuração do tema -->
+<div th:replace="~{fragments/config :: config_default}"></div>
+<!-- Navbar -->
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<!-- Items fixos do tema -->
+<div th:replace="~{fragments/botaosubir :: botaosubir}"></div>
+<div th:replace="~{fragments/config :: inserir_}"></div>
+
+<!-- Espaçamento entre a navbar e o conteúdo principal -->
+<div class="max-w-7xl mx-auto p-4 md:p-8 pt-24"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            <!-- Mensagem carregada após a inserção dos dados-->
+            <div class="alert alert-success alert-dismissible fade show" th:if="${mensagem}">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <span th:text="${mensagem}"></span>
+            </div>
+
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2>Cadastro de <b>Pets</b></h2>
+                        </div>
+                        <div class="col-sm-6 text-end">
+                            <a th:href="@{/pet}" class="btn btn-primary"> Listagem <i class="fas fa-list"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulário de cadastro -->
+                <form th:action="@{/pet/salvar}" th:object="${pet}" method="post">
+                    <input type="hidden" th:field="*{id}">
+
+                    <div class="card">
+                        <div class="card-header">
+                            Dados do Pet
+                        </div>
+
+                        <div class="card-body">
+
+                            <!-- Nome -->
+                            <div class="form-control form-control-sm">
+                                <label class="col-sm-12 col-form-label">Nome:</label>
+                                <div class="col-sm-12">
+                                    <input class="form-control" type="text" th:field="*{nome}">
+                                </div>
+                                <div class="col-sm-12">
+                                    <span class="mensagem" th:if="${#fields.hasErrors('nome')}"
+                                          th:errors="*{nome}"></span>
+                                </div>
+                            </div>
+
+                            <!-- Espécie -->
+                            <div class="form-control form-control-sm">
+                                <label class="col-sm-12 col-form-label">Espécie:</label>
+                                <div class="col-sm-12">
+                                    <input class="form-control" type="text" th:field="*{especie}">
+                                </div>
+                                <div class="col-sm-12">
+                                    <span class="mensagem" th:if="${#fields.hasErrors('especie')}"
+                                          th:errors="*{especie}"></span>
+                                </div>
+                            </div>
+
+                            <!-- Raça -->
+                            <div class="form-control form-control-sm">
+                                <label class="col-sm-12 col-form-label">Raça:</label>
+                                <div class="col-sm-12">
+                                    <input class="form-control" type="text" th:field="*{raca}">
+                                </div>
+                                <div class="col-sm-12">
+                                    <span class="mensagem" th:if="${#fields.hasErrors('raca')}"
+                                          th:errors="*{raca}"></span>
+                                </div>
+                            </div>
+
+                            <!-- DataNascimento -->
+                            <div class="form-control form-control-sm">
+                                <label class="col-sm-12 col-form-label">Data de Nascimento:</label>
+                                <div class="col-sm-12">
+                                    <input class="form-control" type="date" th:field="*{dataNascimento}">
+                                </div>
+                                <div class="col-sm-12">
+                                    <span class="mensagem" th:if="${#fields.hasErrors('dataNascimento')}"
+                                          th:errors="*{dataNascimento}"></span>
+                                </div>
+                            </div>
+
+                            <!-- Peso -->
+                            <div class="form-control form-control-sm">
+                                <label class="col-sm-12 col-form-label">Peso:</label>
+                                <div class="col-sm-12">
+                                    <input class="form-control" type="text" th:field="*{peso}">
+                                </div>
+                                <div class="col-sm-12">
+                                    <span class="mensagem" th:if="${#fields.hasErrors('peso')}"
+                                          th:errors="*{peso}"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-control form-control-sm">
+                                <label class="col-sm-12 col-form-label">Porte:</label>
+                                <div class="col-sm-12">
+                                    <input class="form-control" type="text" th:field="*{porte}">
+                                </div>
+                                <div class="col-sm-12">
+                                    <span class="mensagem" th:if="${#fields.hasErrors('porte')}"
+                                          th:errors="*{porte}"></span>
+                                </div>
+                            </div>
+
+                            <!-- Doenças -->
+                            <div class="form-control form-control-sm">
+                                <label class="col-sm-12 col-form-label">Doenças:</label>
+                                <div class="col-sm-12">
+                                    <input class="form-control" type="text" th:field="*{doenca}">
+                                </div>
+                                <div class="col-sm-12">
+                                    <span class="mensagem" th:if="${#fields.hasErrors('doenca')}"
+                                          th:errors="*{doenca}"></span>
+                                </div>
+                            </div>
+
+                            <input class="form-control" type="hidden" th:field="*{tutorId}">
+
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button class="btn btn-success" type="submit"> Salvar <i class="fas fa-save"></i></button>
+                        </div>
+                        <div class="col-sm-6 text-end">
+                            <a th:href="@{'/tutor/alterar/'+${pet.tutorId}}" class="btn btn-primary"> Voltar <i class="fas fa-undo"></i></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Rodapé -->
+        <div th:replace="fragments/footer :: footer"></div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,247 @@
+/* Tema claro (Azul/Verde-Água) */
+:root {
+    --background-color: #e8f5e9; /* Verde-água muito claro */
+    --surface-color: #ffffff; /* Branco puro para a superfície (cards/container) */
+    --default-color: #263238; /* Azul-marinho escuro para o texto principal */
+    --heading-color: #004d40; /* Verde-água escuro para títulos */
+    --contrast-color: #ffffff; /* Usado para texto sobre o accent (botões) */
+    --accent-color: #4db6ac; /* Verde-água médio/claro para destaque */
+    --nav-hover-color: #00897b; /* Verde-água mais escuro para hover */
+    --heading-font: 'Arial', sans-serif;
+
+    /* Cores do Menu (Ajustadas para Azul/Verde-Água) */
+    --nav-color: #263238;
+    --nav-mobile-background-color: #e8f5e9;
+    --nav-dropdown-background-color: #ffffff;
+    --nav-dropdown-color: #263238;
+    --nav-dropdown-hover-color: #004d40;
+}
+
+/* Color Presets (Ajustadas para Azul/Verde-Água) */
+.light-background {
+    --background-color: #e0f7fa; /* Azul-água muito claro */
+    --surface-color: #ffffff;
+}
+
+.dark-background {
+    --background-color: #1a2b3c;
+    --default-color: #e0f7fa;
+    --heading-color: #80cbc4;
+    --surface-color: #2c425a;
+    --contrast-color: #ffffff;
+}
+
+/* Tema escuro (Azul/Verde-Água) */
+body.dark-theme {
+    --background-color: #1a2b3c; /* Azul escuro/Marinho */
+    --surface-color: #2c425a; /* Azul escuro ligeiramente mais claro para superfície */
+    --default-color: #e0f7fa; /* Azul-água muito claro para o texto principal */
+    --heading-color: #80cbc4; /* Verde-água claro para títulos */
+    --contrast-color: #1a2b3c; /* Cor de alto contraste para botões (texto escuro) */
+    --accent-color: #00bcd4; /* Ciano/Azul-água vibrante para destaque */
+    --nav-hover-color: #0097a7; /* Ciano mais escuro para hover */
+}
+
+/* Base */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--background-color);
+    color: var(--default-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0 1rem;
+    overflow: hidden;
+}
+
+/* Container */
+.auth-container {
+    position: relative;
+    background-color: var(--surface-color);
+    padding: 2rem 2.5rem 5rem;
+    border-radius: 14px;
+    /* Nova sombra e borda de destaque */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 480px;
+    border: 1px solid var(--accent-color);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Título */
+.auth-container h1 {
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--heading-color);
+}
+
+/* Formulário */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels */
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+/* Inputs */
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="text"],
+input[type="file"] {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    margin-bottom: 1.4rem;
+    /* Borda neutra */
+    border: 1px solid var(--default-color);
+    border-radius: 8px;
+    background-color: var(--surface-color);
+    color: var(--default-color);
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Foco no Input */
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="text"]:focus,
+input[type="file"]:focus {
+    outline: none;
+    border-color: var(--accent-color); /* Foco com cor de destaque */
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-color) 25%, transparent); /* Brilho suave */
+}
+
+input::placeholder {
+    color: color-mix(in srgb, var(--default-color) 70%, transparent);
+}
+
+/* Botões padrão */
+button {
+    width: 100%;
+    padding: 0.9rem;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: var(--accent-color);
+    color: var(--contrast-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background-color 0.3s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    /* Hover usa a cor de título para um contraste mais forte */
+    background-color: var(--heading-color);
+    box-shadow: 0 4px 8px color-mix(in srgb, var(--heading-color) 40%, transparent);
+}
+
+/* Botão Voltar (Estilo outline) */
+.voltar {
+    background-color: transparent;
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+}
+
+.voltar:hover {
+    /* Inverte as cores no hover */
+    background-color: var(--accent-color);
+    color: var(--contrast-color);
+}
+
+/* Botão "Continuar" fixado no canto inferior direito */
+#continuar-step1 {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    padding: 0.9rem 1.4rem;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: var(--accent-color);
+    color: var(--contrast-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.2s ease;
+    width: auto;
+}
+
+#continuar-step1:hover {
+    background-color: var(--heading-color);
+    box-shadow: 0 4px 8px color-mix(in srgb, var(--heading-color) 40%, transparent);
+}
+
+/* Texto de link */
+.link-text {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--default-color);
+}
+
+.link-text a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.link-text a:hover {
+    color: var(--heading-color); /* Muda a cor do link no hover */
+    text-decoration: underline;
+}
+
+/* Preview da imagem */
+#preview-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+#preview {
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 50%;
+    border: 3px solid var(--accent-color); /* Borda de destaque */
+    object-fit: cover;
+}
+
+/* Etapas */
+.step {
+    display: none;
+}
+
+.step.active {
+    display: block;
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+    .auth-container {
+        padding: 1.5rem 1.5rem 4rem;
+    }
+
+    h1 {
+        font-size: 1.3rem;
+    }
+
+    input,
+    button,
+    #continuar-step1 {
+        font-size: 1rem;
+    }
+
+    #continuar-step1 {
+        bottom: 1rem;
+        right: 1rem;
+    }
+}

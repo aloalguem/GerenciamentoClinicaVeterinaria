@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Procedimento</title>
+</head>
+
+<!-- Include o fragmento de configuração -->
+<body class="light:bg-light-background">
+<!-- Configuração do tema -->
+<div th:replace="~{fragments/config :: config_default}"></div>
+<!-- Navbar -->
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<!-- Items fixos do tema -->
+<div th:replace="~{fragments/botaosubir :: botaosubir}"></div>
+<!--<div th:replace="~{fragments/botaoAdicionar :: botaoAdicionar}"></div>-->
+<!--espaçamento entre a navbar e o conteúdo principal-->
+<div th:replace="~{fragments/config :: listas}"></div>
+<div class="max-w-7xl mx-auto p-4 md:p-8 pt-24"></div>
+<div class="container mt-5">
+
+    <h2 class="mb-4">Procedimento</h2>
+    <a class="btn btn-primary mb-3" th:href="@{/procedimento/novo}">Novo Item</a>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Procedimento</th>
+            <th>Veterinário</th>
+            <th>Ações</th>
+
+
+        </tr>
+        </thead>
+        <tbody id="tabela-usuarios">
+        <!-- Recurso do Themyleaf. Verifica se a lista de procedimentos está vazia -->
+        <tr th:if="${#lists.isEmpty(procedimentos)}">
+            <td colspan="2">Nenhum registro encontrado</td>
+        </tr>
+
+        <!-- Recurso do Themyleaf. Percorre a lista de procedimentos e preenche a tabela -->
+        <tr th:each="procedimento : ${procedimentos}">
+            <td><span th:text="${procedimento.id}"> ID </span></td>
+            <td><span th:text="${procedimento.nome}"> Procedimento </span></td>
+            <td><span th:text="${procedimento.veterinario.nome}"> Veterinário </span></td>
+
+            <td>
+                <!-- Recurso do Themyleaf. Carrega o id do procedimento para ser alterado -->
+                <a th:href="@{/procedimento/alterar/{id}(id=${procedimento.id})}" class="edit" data-toggle="modal">
+                    <i class="material-icons" data-toggle="tooltip" title="Alterar">&#xE254;</i>
+                </a>
+                <a th:href="@{/procedimento/excluir/{id}(id=${procedimento.id})}"
+                   th:data-confirm-delete="|Você gostaria de apagar ${procedimento.id}?|"
+                   onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false"
+                   class="delete">
+                    <i class="material-icons" data-toggle="tooltip" title="Excluir">&#xE872;</i>
+                </a>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
